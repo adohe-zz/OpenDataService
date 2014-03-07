@@ -1,0 +1,25 @@
+{
+  "name": "OpenDataService",
+  "version": "0.0.1",
+  "description": "Open Data Protocol implementation&practice in Node",
+  "main": "server.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://AdoHe@github.com/AdoHe/OpenDataService.git"
+  },
+  "keywords": [
+    "OData",
+    "Data",
+    "Node",
+    "Mobile",
+    "Visualization"
+  ],
+  "author": "AdoHe <coolhzb@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AdoHe/OpenDataService/issues"
+  }
+}
