@@ -17,6 +17,9 @@
     "Mobile",
     "Visualization"
   ],
+  "dependencies": {
+      "log4js": "0.6.12"
+  },
   "author": "AdoHe <coolhzb@163.com>",
   "license": "MIT",
   "bugs": {
