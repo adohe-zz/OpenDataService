@@ -1,6 +1,5 @@
 var logger = require('logger'),
-	EDM = require('../schema/EDM'),
-	utils = require('../utils/utils');
+	EDM = require('../schema/EDM');
 
 require('odata-server');
 
@@ -16,12 +15,14 @@ EDM.init(function(err, context) {
 	//Support ldap-auth in the feature
 	
 	logger.info('setup express server now...');
-	var app = require('./app');
+	var app = require('./lib/app');
 	var routes = require('./routes');
 	var connect = require('connect');
 	var http = require('http');
 	var https = require('https');
 	var fs = require('fs');
+	var utils = require('./utils/utils');
+	var settings = require('./conf/settings');
 
 	logger.info('Setup HTTP Basic Authentication.');
 	app.use('/d.svc', connect.basicAuth(username, password, fn) {
@@ -40,6 +41,27 @@ EDM.init(function(err, context) {
 		CORS: true,
 		database: 'odata',
 		responseLimit: -1,
-
+		checkPermission: function(access, user, entitySets, callback) {
+			
+		},
+		provider: {
+			name: 'mongoDB',
+			databaseName: 'odata',
+			address: settings.dbHost,
+			port: settings.dbPort,
+			username: settings.dbAdminName,
+			password: settings.dbAdminPassword
+		}
 	}));
+
+	logger.info('Setup HTTP Server and listen for request...');
+	var server = http.createServer(app);
+
+	server.setTimeout(10 * 60 * * 60 * 1000);
+
+	server.listen(app.get('port'), function() {
+		console.log('The server started...');
+	});
+
+	routes(app);
 });
