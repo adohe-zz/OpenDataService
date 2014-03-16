@@ -1,5 +1,6 @@
 var logger = require('logger'),
-	EDM = require('../schema/EDM');
+	EDM = require('../schema/EDM'),
+	utils = require('../utils/utils');
 
 require('odata-server');
 
@@ -23,5 +24,22 @@ EDM.init(function(err, context) {
 	var fs = require('fs');
 
 	logger.info('Setup HTTP Basic Authentication.');
-	app.use('/d.svc', connect.bas)
+	app.use('/d.svc', connect.basicAuth(username, password, fn) {
+		utils.authenticate(username, password, function(err, username) {
+			if(err) {
+				fn(err, username);
+			} else {
+				fn(null, username);
+			}
+		});
+	});
+	
+	logger.info('Setup OData Server...');
+	app.use('/d.svc', $data.ODataServer({
+		type: EMDSchema,
+		CORS: true,
+		database: 'odata',
+		responseLimit: -1,
+
+	}));
 });

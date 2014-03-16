@@ -4,4 +4,7 @@ module.exports = {
 	dbPort: '27017'
 	dbAdminName: 'admin',
 	dbAdminPwd: 'admin'
+	algorithm: 'aes-256-cbc',
+	key: 'OData',
+	pidPath: 'run/app.pid'
 }
