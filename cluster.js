@@ -20,7 +20,7 @@ for(var i = 0; i < numCPUs; i++) {
 process.on('SIGINT', function() {
 	logger.info('');
 	sigint = true;
-	process.exit();
+	process.exit(0);
 });
 
 //Called when kill process
