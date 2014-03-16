@@ -1,6 +1,10 @@
 var cluster = require('cluster'),
 	numCPUs = require('os').cpus().length,
-	logger = require('./config/log');
+	logger = require('./config/log'),
+	utils = require('./utils/utils');
+
+//First wite the pid to file
+utils.writePid(process.pid);
 
 //Set the child process working file
 cluster.setupMaster({
@@ -17,6 +21,12 @@ process.on('SIGINT', function() {
 	logger.info('');
 	sigint = true;
 	process.exit();
+});
+
+//Called when kill process
+process.on('SIGTERM', function() {
+	utils.deletePid();
+	process.exit(0);
 });
 
 process.on('SIGUSR2', function() {
