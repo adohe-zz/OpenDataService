@@ -3,7 +3,7 @@ var cluster = require('cluster'),
 	logger = require('./config/log'),
 	utils = require('./utils/utils');
 
-//First wite the pid to file
+//First write the pid to file
 utils.writePid(process.pid);
 
 //Set the child process working file
@@ -30,7 +30,7 @@ process.on('SIGTERM', function() {
 });
 
 process.on('SIGUSR2', function() {
-	logger.info('SIGUSR2 received, reloading workers...');	
+	logger.info('SIGUSR2 received, reloading workers...');
 
 	//delete the cached module, so we can reload our app
 	delete require.cache[require.resolve('./app')];
@@ -42,7 +42,7 @@ process.on('SIGUSR2', function() {
 	var f = function() {
 		if(i === workers.length)
 			return;
-		
+
 		logger.info('Killing worker ' + workers[i]);
 		cluster.workers[workers[i]].disconnect();
 		cluster.workers[workers[i]].on('disconnect', function() {
@@ -66,6 +66,6 @@ cluster.on('exit', function(worker, code, signal) {
 });
 
 cluster.on('listening', function(worker, address) {
-	logger.info('A new worker with #' + worker.process.id + ' is now connected to ' + 
+	logger.info('A new worker with #' + worker.process.id + ' is now connected to ' +
 		address.address + ' : ' + address.port);
 });

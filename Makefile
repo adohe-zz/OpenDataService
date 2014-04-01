@@ -20,4 +20,4 @@ cov: test-cov
 
 test-all: test test-cov
 
-.PHONY: test
+.PHONY: test test-all
