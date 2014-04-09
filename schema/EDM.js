@@ -3,7 +3,7 @@ var logger = require('../config/log'),
 	context;
 
 logger.info('EDM generating...');
-exports.init = function(callback) {
+exports.init = function(config, callback) {
 	context = {};
 	Entity.get(null, function(err, entities) {
 		if(err)

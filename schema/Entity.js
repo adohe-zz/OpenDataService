@@ -1,7 +1,7 @@
 var setting = require('../config/setting'),
 	db = require('../config/db'),
 	logger = require('../config/log'),
-	utils = require('../utils/utils'),
+	utils = require('../lib/utils'),
 	mongodb = require('mongodb');
 
 function Entity(entity) {
@@ -33,7 +33,7 @@ Entity.get = function(entityName, callback) {
 						logger.error('There is a error when fetch data from entities...');
 						callback(err, null);
 					}
-					
+
 					var entities = [];
 					docs.forEach(function(doc) {
 						var entity = new Entity(doc);
@@ -41,7 +41,7 @@ Entity.get = function(entityName, callback) {
 					});
 					logger.debug('Total entities: ' + entities.length);
 					callback(null, entities);
-				}); 
+				});
 			} else {
 				return callback(utils.error('authenticate failed'), null);
 			}

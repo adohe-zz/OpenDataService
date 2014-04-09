@@ -1,10 +1,13 @@
-var logger = require('logger'),
+var logger = require('./config/log'),
 	EDM = require('../schema/EDM');
 
 require('odata-server');
 
+var env = process.env.NODE_ENV || 'development',
+    config = require('./config/config')[env];
+
 logger.info('Init EDM schema...');
-EDM.init(function(err, context) {
+EDM.init(config, function(err, context) {
 	if(err) {
 		logger.error('Error: ' + err);
 	}
@@ -13,7 +16,7 @@ EDM.init(function(err, context) {
 	$data.Class.define('EDMSchema', $data.EntityContext, null, context, null);
 
 	//Support ldap-auth in the feature
-	
+
 	logger.info('setup express server now...');
 	var app = require('./lib/app');
 	var routes = require('./routes');
@@ -34,7 +37,7 @@ EDM.init(function(err, context) {
 			}
 		});
 	});
-	
+
 	logger.info('Setup OData Server...');
 	app.use('/d.svc', $data.ODataServer({
 		type: EMDSchema,
@@ -42,7 +45,7 @@ EDM.init(function(err, context) {
 		database: 'odata',
 		responseLimit: -1,
 		checkPermission: function(access, user, entitySets, callback) {
-			
+
 		},
 		provider: {
 			name: 'mongoDB',

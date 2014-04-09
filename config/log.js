@@ -1,4 +1,5 @@
 var log4js = require('log4js');
+// configure the logger appenders
 log4js.configure({
 	appenders: [
 		{type: 'console'},
@@ -8,7 +9,7 @@ log4js.configure({
 			maxLogSize: 10240,
 			backups: 365,
 			category: 'normal'
-			
+
 		}
 	],
 	replaceConsole: true

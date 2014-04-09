@@ -1,7 +1,7 @@
 var cluster = require('cluster'),
 	numCPUs = require('os').cpus().length,
 	logger = require('./config/log'),
-	utils = require('./utils/utils');
+	utils = require('./lib/utils');
 
 //First write the pid to file
 utils.writePid(process.pid);
