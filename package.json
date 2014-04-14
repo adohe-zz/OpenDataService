@@ -36,8 +36,8 @@
       "odata-server": "1.3.1",
       "mongodb": "*",
       "connect": "*",
-      "path": "*",
       "express-partials": "*",
+      "connect-multiparty": "*"
   },
   "devDenpendencies": {
       "mocha": "*",
