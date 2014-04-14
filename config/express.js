@@ -4,14 +4,12 @@ var express = require('express'),
     log4js = require('log4js'),
     logger = require('./log');
 
-var env = process.env.NODE_ENV || 'development';
-
 module.exports = function(app, config) {
 
   app.set('showStackError', true);
 
   // should be placed before express.static
-  app.use(express.compress());
+  //app.use(express.compress());
 
   // set static file location
   app.use(express.static(config.root + '/public'));

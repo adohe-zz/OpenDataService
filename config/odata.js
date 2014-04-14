@@ -1,6 +1,6 @@
 module.exports = function(app, config) {
 
-  app.use('/d.svc', $data.OdataServer({
+  app.use('/d.svc', $data.ODataServer({
     type: EDMSchema,
     CORS: true,
     database: config.db.name,
@@ -13,7 +13,7 @@ module.exports = function(app, config) {
       address: config.db.host,
       port: config.db.port,
       username: config.db.adminName,
-      password: ''
+      password: config.db.adminPwd
     }
   }));
 

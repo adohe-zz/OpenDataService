@@ -30,7 +30,7 @@
   ],
   "dependencies": {
       "log4js": "0.6.12",
-      "express": "*",
+      "express": "3.*",
       "ejs": "*",
       "jaydata": "1.3.1",
       "odata-server": "1.3.1",

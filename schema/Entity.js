@@ -1,8 +1,10 @@
-var setting = require('../config/setting'),
-	db = require('../config/db'),
+var	db = require('../config/db'),
 	logger = require('../config/log'),
 	utils = require('../lib/utils'),
 	mongodb = require('mongodb');
+
+var env = process.env.NODE_ENV || 'development',
+    config = require('../config/config')[env];
 
 function Entity(entity) {
 }
@@ -20,7 +22,7 @@ Entity.get = function(entityName, callback) {
 			return callback(err, null);
 		}
 
-		db.authenticate(setting.dbAdminName, setting.dbAdminPwd, function(err, result) {
+		db.authenticate(config.db.adminName, config.db.adminPwd, function(err, result) {
 			if(result) {
 				var query = {};
 				if(entityName) {

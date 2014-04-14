@@ -1,6 +1,6 @@
 var express = require('express'),
     logger = require('./config/log'),
-	  EDM = require('../schema/EDM');
+	  EDM = require('./schema/EDM');
 
 require('odata-server');
 
@@ -32,13 +32,11 @@ EDM.init(config, function(err, context) {
   logger.info('setup odata server...');
   require('./config/odata')(app, config);
 
-	var connect = require('connect');
+	//var connect = require('connect');
 	var http = require('http');
 	var fs = require('fs');
-	var utils = require('./utils/utils');
-	var settings = require('./conf/settings');
 
-	logger.info('Setup HTTP Basic Authentication.');
+	/*logger.info('Setup HTTP Basic Authentication.');
 	app.use('/d.svc', connect.basicAuth(username, password, fn) {
 		utils.authenticate(username, password, function(err, username) {
 			if(err) {
@@ -47,14 +45,14 @@ EDM.init(config, function(err, context) {
 				fn(null, username);
 			}
 		});
-	});
+	});*/
 
 	// setup HTTP server
 	logger.info('Setup HTTP Server and listen for request...');
 	var port = process.env.PORT || 8000;
 	var server = http.createServer(app);
 
-	server.setTimeout(10 * 60 * * 60 * 1000);
+	server.setTimeout(10 * 60 * 60 * 1000);
 
 	server.listen(port, function() {
 		console.log('The server started...');

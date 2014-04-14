@@ -11,7 +11,7 @@ cluster.setupMaster({
 	exec: 'server.js'
 });
 
-for(var i = 0; i < numCPUs; i++) {
+for(var i = 0; i < 1; i++) {
 	cluster.fork();
 	logger.info('Cluster forked process, NO.' + i);
 }

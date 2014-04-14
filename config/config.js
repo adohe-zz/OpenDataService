@@ -7,7 +7,8 @@ module.exports = {
       name: 'odata',
       host: '127.0.0.1',
       port: '27017',
-      adminName: 'odata'
+      adminName: 'odata',
+      adminPwd: 'odataTJ'
     },
     root: rootPath,
     pidPath: 'run/app.pid'
