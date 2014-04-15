@@ -1,6 +1,11 @@
+/*jslint browser: true*/
+/*global $, jQuery, alert*/
+
 function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
-    var sourceObj = typeof oSourceObj == "string" ? document.getElementById(oSourceObj) : oSourceObj;
-    var targetObj = typeof oTargetObj == "string" ? document.getElementById(oTargetObj) : oTargetObj;
+    'use strict';
+    
+    var sourceObj = typeof oSourceObj === "string" ? document.getElementById(oSourceObj) : oSourceObj;
+    var targetObj = typeof oTargetObj === "string" ? document.getElementById(oTargetObj) : oTargetObj;
     var openTip = oOpenTip || "";
     var shutTip = oShutTip || "";
     if (targetObj.style.display != "none") {
@@ -17,59 +22,67 @@ function openShutManager(oSourceObj, oTargetObj, shutAble, oOpenTip, oShutTip) {
     }
 }
 
-function syncDataFromMSTR(){
-
+function syncDataFromMSTR() {
+    'use strict';
 }
 
 function popdown(name, oSourceId) {
-    var childTr = document.getElementById(oSourceId).getElementsByTagName("tr");
-    if (childTr.length == 2) {
+    'use strict';
+    
+    var childTr = document.getElementById(oSourceId).getElementsByTagName('tr');
+    if (childTr.length === 2) {
         document.getElementById(oSourceId).removeChild(childTr[childTr.length - 1]);
     } else {
-        var tr = document.createElement("tr");
+        var tr = document.createElement('tr'),
+            paratd1 = document.createElement('td'),
+            paratd2 = document.createElement('td'),
+            paratd3 = document.createElement('td'),
+            paratd4 = document.createElement('td'),
+            pop = document.createElement('div'),
+            metadata = document.createElement('img'),
+            quickview = document.createElement('img'),
+            querybuilder = document.createElement('img'),
+            tableau = document.createElement('img'),
+            download = document.createElement('img'),
+            metadata_link = document.createElement('a'),
+            quickview_link = document.createElement('a'),
+            querybuilder_link = document.createElement('a');
+        
         tr.setAttribute('class', 'poptr');
-
-        var paratd1 = document.createElement("td");
-        var paratd2 = document.createElement("td");
-        var paratd3 = document.createElement("td");
-        var paratd4 = document.createElement("td");
 
         paratd1.setAttribute('class', 'p1');
         paratd2.setAttribute('class', 'p2');
         paratd3.setAttribute('class', 'p3');
         paratd4.setAttribute('class', 'p4');
 
-        var pop = document.createElement("div");
         pop.setAttribute('class', 'popdown');
-        var metadata = document.createElement("img");
-        metadata.src = "/images/edm-metadata.png";
-        var quickview = document.createElement("img");
-        quickview.src = "/images/edm-quickview.png";
-        var querybuilder = document.createElement("img");
-        querybuilder.src = "/images/edm-querybuild.png";
-        var tableau = document.createElement("img");
-        tableau.src = "/images/edm-tableau.png";
-        var download = document.createElement("img");
-        download.src = "/images/edm-download.png";
+        
+        metadata.src = '/images/edm-metadata.png';
+        quickview.src = '/images/edm-quickview.png';
+        querybuilder.src = '/images/edm-querybuild.png';
+        tableau.src = '/images/edm-tableau.png';
+        download.src = '/images/edm-download.png';
 
         pop.appendChild(metadata);
-        var metadata_link = document.createElement('a');
-        metadata_link.href = '/d.svc/' + name + "s?$format=json&$top=100";
-        metadata_link.target = "_blank";
-        metadata_link.appendChild(document.createTextNode("\u00A0Get JSON Data (Top 100)"));
+        
+        metadata_link.href = '/d.svc/' + name + 's?$format=json&$top=100';
+        metadata_link.target = '_blank';
+        metadata_link.appendChild(document.createTextNode('\u00A0Get JSON Data (Top 100)'));
         pop.appendChild(metadata_link);
+        
         pop.appendChild(quickview);
-        var quickview_link = document.createElement('a');
-        var qLink = "/d.svc/" + name + "s/$count";
-        quickview_link.href = qLink;
-        quickview_link.target = "_blank";
-        quickview_link.appendChild(document.createTextNode("\u00A0Row Count"));
+        
+        quickview_link.href = '/d.svc/' + name + 's/$count';
+        quickview_link.target = '_blank';
+        quickview_link.appendChild(document.createTextNode('\u00A0Row Count'));
         pop.appendChild(quickview_link);
+        
         pop.appendChild(querybuilder);
-        var querybuilder_link = document.createElement('a');
-        querybuilder_link.href = '/query/' + name + "s";
-        querybuilder_link.appendChild(document.createTextNode("\u00A0Build Query"));
+        
+        querybuilder_link.href = '/query/' + name + 's';
+        querybuilder_link.appendChild(document.createTextNode('\u00A0Build Query'));
         pop.appendChild(querybuilder_link);
+        
         //pop.appendChild(tableau);
         // var tableau_link = document.createElement('a');
         // tableau_link.href = 'javascript:syncDataFromMSTR(\"' + name + 's\");';
@@ -91,41 +104,45 @@ function popdown(name, oSourceId) {
 }
 
 function parseEntityProject(entityName) {
+    'use strict';
+    
     if (!entityName) {
         return null;
     }
 
-    return entityName.split("_")[0];
+    return entityName.split('_')[0];
 }
-function createTbody(entyval, num) {
-    var para = document.createElement("tbody");
-    var tbody_id = 'tbody' + num;
+
+function createTbody(entity, num) {
+    'use strict';
+    
+    var para = document.createElement('tbody'),
+        tbody_id = 'tbody' + num,
+        paratr = document.createElement('tr'),
+        paratd1 = document.createElement('td'),
+        paratd2 = document.createElement('td'),
+        paratd3 = document.createElement('td'),
+        paratd4 = document.createElement('td'),
+        project = parseEntityProject(entity),
+        node1 = document.createElement('h5'),
+        name = document.createElement('h4'),
+        node2 = document.createElement('h5'),
+        node3 = document.createElement('h5'),
+        node4 = document.createElement('h5'),
+        table = document.getElementById('entityTable');
+    
     para.setAttribute('id', tbody_id);
-    var paratr = document.createElement("tr");
-
-    var paratd1 = document.createElement("td");
-    var paratd2 = document.createElement("td");
-    var paratd3 = document.createElement("td");
-    var paratd4 = document.createElement("td");
-
     paratd1.setAttribute('class', 'p1');
     paratd2.setAttribute('class', 'p2');
     paratd3.setAttribute('class', 'p3');
     paratd4.setAttribute('class', 'p4');
-
-    var project = parseEntityProject(entyval);
-
-    var node1 = document.createElement("h5");
-    var name = document.createElement("h4");
-    name.appendChild(document.createTextNode(entyval));
+    
+    name.appendChild(document.createTextNode(entity));
     node1.appendChild(name);
-    node1.appendChild(document.createTextNode("This entity " + entyval + " comes from MSTR Project: " + project));
-    var node2 = document.createElement("h5");
-    node2.appendChild(document.createTextNode("2013.07.23"));
-    var node3 = document.createElement("h5");
+    node1.appendChild(document.createTextNode('This entity ' + entity + ' comes from MSTR Project: ' + project));
+    node2.appendChild(document.createTextNode('2013.07.23'));
     node3.appendChild(document.createTextNode(project));
-    var node4 = document.createElement("h5");
-    node4.appendChild(document.createTextNode("L2"));
+    node4.appendChild(document.createTextNode('L2'));
 
     para.appendChild(paratr);
     paratr.appendChild(paratd1);
@@ -139,11 +156,10 @@ function createTbody(entyval, num) {
     paratd4.appendChild(node4);
 
     paratr.onclick = function () {
-        popdown(entyval, tbody_id);
-    }
+        popdown(entity, tbody_id);
+    };
 
-    var element = document.getElementById("entitytable");
-    element.appendChild(para);
+    table.appendChild(para);
 }
 
 function getObj(id) {
@@ -157,20 +173,24 @@ function check() {
 
 } 
 
-function clickIndexGrid(objId) {
-	if(objId === 'index-edm'){
+function onIndexGridClicked(objId) {
+    'use strict';
+    
+	if (objId === 'index-edm') {
 		window.location.href = '/edm';
-	}else if(objId === 'index-visu'){
+	} else if (objId === 'index-visu') {
 		window.location.href = '/visualization';
-	}else if(objId === 'index-query'){
+	} else if (objId === 'index-query') {
 		window.location.href = '/query';
-	}else{
+	} else {
 		window.location.href = '/consume';
 	}
 }
 
 
-function downloadcsv(entity){
+function downloadcsv(entity) {
+    'use strict';
+    
     alert("Coming Soon..." + entity);
 //    OData.defaultHttpClient.enableJsonpCallback = true;
 //    OData.request(
@@ -193,6 +213,8 @@ function downloadcsv(entity){
 }
 
 function JSON2CSV(objArray) {
+    'use strict';
+    
     var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
 
     var str = '';
@@ -201,12 +223,12 @@ function JSON2CSV(objArray) {
     if ($("#labels").is(':checked')) {
         var head = array[0];
         if ($("#quote").is(':checked')) {
-            for (var index in array[0]) {
+            for (index in array[0]) {
                 var value = index + "";
                 line += '"' + value.replace(/"/g, '""') + '",';
             }
         } else {
-            for (var index in array[0]) {
+            for (index in array[0]) {
                 line += index + ',';
             }
         }

@@ -1,0 +1,37 @@
+<h3>Entity Data Model<a href="/d.svc/$metadata" target="_blank">&nbsp;&nbsp;&nbsp;View Original OData Metadata</a> &nbsp;&nbsp;&nbsp;&nbsp;<button id="btn_submit" name="btn_submit" class="btn btn-success">Submit New Entity</button>&nbsp;&nbsp;<button id="btn_upload" name="btn_upload" class="btn btn-success">Upload CSV File</button></h3>
+<div class="row-fluid">
+	<table id="entityTable" class="example1" width="1200">
+		<colgroup span="0" width="400"></colgroup>
+		<colgroup span="4" width="400"></colgroup>
+		<thead>
+			<tr class="col">
+				<td class="p1"><h4>&nbsp;&nbsp;&nbsp;&nbsp;Name</h4></td>
+				<td class="p2"><h4>Last Update</h4></td>
+				<td class="p3"><h4>Project</h4></td>
+				<td class="p4"><h4>Access Level</h4></td>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+
+<script type="text/javascript">
+    $('#btn_submit').click(function() {
+        window.location.href = '/newentity';
+    });
+
+	$('#btn_upload').click(function() {
+		window.location.href = '/upload';
+	});
+
+    OData.read('/d.svc/$metadata', function (metadata) {
+        var entitySets = metadata.dataServices.schema[0].entityType;
+        var entityCount = entitySets.length;
+        for(var i = 0; i < entityCount; i++)
+        {
+            createTbody(entitySets[i].name, i);
+        }
+    }, function (err) {
+        alert('Error:' + JSON.stringify(err));
+    }, OData.metadataHandler);
+</script>

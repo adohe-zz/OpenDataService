@@ -7,90 +7,84 @@
 		<link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 		<link href="/stylesheets/style.css" rel="stylesheet" media="screen">
 		<link href="/stylesheets/odata-query-builder.css" rel="stylesheet">
-
-        <script type="text/javascript" src="/javascripts/jquery-1.7.js"></script>
-		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/javascripts/application.js"></script>
-		<script type="text/javascript" src="/javascripts/datajs-1.1.1.min.js"></script>
-
+        
+        <!-- Pre_Load JavaScripts -->
+        <script type="text/javascript" src="/javascripts/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="/javascripts/datajs-1.1.1.min.js"></script>
 	</head>
 	<body>
-		<div id="wrap">
-		<div class="logo-container">
-			<div class="container">
-				<a href="/" title="Open Data Service V1.0">
-					<img src="/images/header.jpg" alt="Open Data Service V1.0">
-				</a>	
-				<div class="pull-right top-help-avatar">
-					<img src="/images/avatar.jpg" alt="Personal Avatar">
-					<a href="#">Welcome</a>
-					&nbsp;&nbsp;&nbsp;&nbsp;
-					<img src="/images/help-page.png" alt="Help Page">
-					<a href="mailto:lukhan@ebay.com?subject=About-Open-Data-Service"
-                       target="_blank" title="Contact">Contact</a>
-				</div>
-			</div>
-		</div>
-		<div class="navbar navbar-inverse navbar-fixed-top nav-container">
-			<div class="navbar-inner">
-				<div class="container">
-					<a href="/" data-toggle="collapse" data-target=".nav-collapse"
-					class="logo-small" title="Open Data Service V2.0">
-						<img src="/images/header.jpg" data-toggle="collapse"
-						data-target=".nav-collapse" alt="Open Data Service V2.0">
-					</a>
-					<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="nav-collapse collapse" style="height: 0px;">
-						<ul class="nav">
-							<li class="divider-vertical"></li>
-							<li>
-								<a href="/">Home</a>
-							</li>
-							<li class="divider-vertical"></li>
-							<li>
-								<a href="/edm" class="bootstro" data-bootstro-title="Something about EDM" data-bootstro-placement="bottom" data-bootstro-step="0">EDM</a>
-							</li>
-                            <li class="divider-vertical"></li>
-                            <li>
-                                <a href="/query" class="bootstro" data-bootstro-title="Something
-								about Dashboard" data-bootstro-placement="bottom"
-                                   data-bootstro-step="5">Query</a>
-                            </li>
-							<li class="divider-vertical"></li>
-							<li>
-								<a href="/consume" class="bootstro" data-bootstro-title="Something about Query" data-bootstro-placement="bottom" data-bootstro-step="2">Consume</a>
-							</li>
-							<li class="divider-vertical"></li>
-							<li>
-								<a href="/admin" class="bootstro" data-bootstro-title="Something about Consume" data-bootstro-placement="bottom" data-bootstro-step="3">Admin</a>
-							</li>
-							<li class="divider-vertical"></li>
-						</ul>
-						<form class="navbar-form pull-right" onsubmit="return false;">
-							<input type="text" class="search-query" disabled placeholder="Search">
-							<button type="submit" class="btn" disabled></button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container content">
-			<%- body %>
-		</div>
-	</div>
-	<!--<div id="footer">
-		<div class="container">
-			<div class="pull-right footer-contact">
-				<span>Contact: <a href="mailto:DL-EBAY-OData@ebay.com?subject=About-Open-Data-Service"
-                                  target="_blank" title="DL-EBAY-OData">DL-EBAY-OData</a>
-			</div>
-		</div>
-	</div>-->
+        <div id="wrap">
+            <div class="logo-container">
+                <div class="container">
+                    <a href="/" title="Open Data Service V1.0">
+                        <img src="/images/header.jpg" alt="Open Data Service V1.0">
+                    </a>	
+                    <div class="pull-right top-help-avatar">
+                        <img src="/images/avatar.jpg" alt="Personal Avatar">
+                        <a href="#">Welcome</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="/images/help-page.png" alt="Help Page">
+                        <a href="mailto:lukhan@ebay.com?subject=About-Open-Data-Service"
+                           target="_blank" title="Contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-inverse navbar-fixed-top nav-container">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a href="/" data-toggle="collapse" data-target=".nav-collapse"
+                        class="logo-small" title="Open Data Service V2.0">
+                            <img src="/images/header.jpg" data-toggle="collapse"
+                            data-target=".nav-collapse" alt="Open Data Service V2.0">
+                        </a>
+                        <button type="button" class="btn btn-navbar" data-toggle="collapse"
+                        data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="nav-collapse collapse" style="height: 0px;">
+                            <ul class="nav">
+                                <li class="divider-vertical"></li>
+                                <li>
+                                    <a href="/">Home</a>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li>
+                                    <a href="/edm" class="bootstro" data-bootstro-title="Something about EDM" data-bootstro-placement="bottom" data-bootstro-step="0">EDM</a>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li>
+                                    <a href="/query" class="bootstro" data-bootstro-title="Something
+                                    about Dashboard" data-bootstro-placement="bottom"
+                                       data-bootstro-step="5">Query</a>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li>
+                                    <a href="/consume" class="bootstro" data-bootstro-title="Something about Query" data-bootstro-placement="bottom" data-bootstro-step="2">Consume</a>
+                                </li>
+                                <li class="divider-vertical"></li>
+                                <li>
+                                    <a href="/admin" class="bootstro" data-bootstro-title="Something about Consume" data-bootstro-placement="bottom" data-bootstro-step="3">Admin</a>
+                                </li>
+                                <li class="divider-vertical"></li>
+                            </ul>
+                            <form class="navbar-form pull-right" onsubmit="return false;">
+                                <input type="text" class="search-query" disabled placeholder="Search">
+                                <button type="submit" class="btn" disabled></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container content">
+                <%- body %>
+            </div>
+        </div>
+            
+        <!-- Load JavaScripts -->
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/javascripts/application.js"></script>
 	</body>
 </html>
 
