@@ -1,0 +1,334 @@
+html,body {
+	height: 100%;
+}
+
+.logo-container {
+	background-color: #292929;
+}
+
+.top-help-avatar {
+	padding-top: 23px;
+}
+
+.top-help-avatar a {
+	color: #ffffff;
+}
+
+.logo-small {
+	display: none;
+}
+
+.nav-container {
+	position: relative;
+}
+
+.navbar-inner {
+	border-left: none;
+	border-right: none;
+	border-radius: 0;
+	padding-left: 130px;
+	padding-right: 100px;
+}
+
+.navbar-inverse .navbar-inner {
+	background: url(../images/menu-bg.jpg) repeat-x;
+	border:none;
+	padding-top: 5px;
+}
+
+.navbar .divider-vertical {
+	border: none;
+	width: 1px;
+	background-color: #c5c5c5;
+	height: 25px;
+	margin-top: 12px; 
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.navbar .nav>li>a {
+	padding-left: 28px;
+	padding-right: 28px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin: 10px 15px;
+	line-height: 26px;
+	color: #333333;
+	font-style: bold;
+}
+
+.navbar-inverse .nav>li>a:hover {
+	color: #ffffff;
+	background: url(../images/menu-bg-over.png);
+}
+
+.search-query {
+	border: none;
+	border-radius: 0px;
+	width: 130px;
+}
+
+.navbar-form input {
+	background: url(../images/menu-bg-search.png);
+	margin-top: 4px;
+}
+
+.navbar-form .btn {
+	background: url(../images/menu-button-search.png);
+	border: none;
+	width: 29px;
+	height: 26px;
+	margin-left: 0;
+	margin-top: 6px;
+}
+
+.content h3 {
+	margin-top: 35px;
+	padding-left: 10px;
+	font-size: 20px;
+	font-weight: normal;
+	color: #666666;
+}
+
+.content h3 a {
+	font-size: 14px;
+}
+
+.content h3 a:hover {
+	text-decoration: none;
+}
+
+.content .row-fluid {
+	margin-top: 25px;
+}
+
+.content .span4 {
+	height: 387px;
+}
+
+#index-edm {
+	background: url(../images/index-pic-01.png) no-repeat;
+}
+
+#index-visu {
+	background: url(../images/index-pic-02.png) no-repeat;
+}
+
+#index-query {
+	background: url(../images/index-pic-03.png) no-repeat;
+}
+
+.content .span4:hover {
+	cursor: pointer;
+}
+
+.content .span4 h5 {
+	margin-top: 45px;
+	margin-right: 30px;
+	font-size: 14px;
+	color: #ffffff;
+	text-align: right;
+}
+
+.content .span4 p {
+	margin-left: 25px;
+	color: #666666;
+	font-size: 14px;
+	margin-top: 265px;
+}
+
+.span8 {
+	margin-top: 15px;
+	border: 1px solid #e6e6e6;
+	padding-top: 30px;
+	margin-left: 0;
+}
+
+table#entitytable {
+	width: 100%;
+}
+
+table#entitytable tbody {
+	border: 1px solid #dcdcdc;
+}
+
+table#entitytable tbody tr.poptr {
+	background: #dcdcdc;
+}
+
+table#entitytable tbody tr.poptr div {
+	width: 100%;
+}
+
+table#entitytable tbody tr.poptr div img {
+	padding-left: 15px;
+}
+
+*.p1 {
+	width: 25%;
+	padding:10px
+}
+
+*.p1 h5 {
+	padding-left: 15px;
+	color: #999999;
+}
+
+*.p1 h5 h4 {
+	padding-bottom: 8px;
+	color: #333333;
+}
+
+*.p2 {
+	width: 10%
+}
+
+*.p2 h5 {
+	color: #666666;
+	text-align: center;
+}
+
+*.p3 {
+	width: 15%
+}
+
+*.p3 h5 {
+	color: #666666;
+	text-align: center;
+}
+
+*.p4 {
+	width: 15%
+}
+
+*.p4 h5 {
+	color: #666666;
+	text-align: center;
+}
+
+*.p5 {
+	width: 20%
+}
+
+*.p5 h5 {
+	color: #666666;
+	text-align: center;
+}
+
+*.p6 {
+	width: 15%
+}
+
+*.p6 h5 {
+	color: #666666;
+	text-align: center;
+}
+
+*.col{
+	background: black;
+	color: white;
+}
+
+*.col h4 {
+	text-align: center;
+}
+
+.node {
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+.link {
+	stroke: #fff;
+}
+
+.entity {
+	width: 250px;
+	height: 50px;
+}
+.entity-title {
+	float: left;
+	width: 100%;
+	display: block;
+}
+
+.entity-img {
+	float: right;
+	width: 25%;
+	display: block;
+	margin-top: 25px;
+}
+
+.span12 {
+	border: 1px solid #dcdcdc;
+}
+
+select#sites {
+	width: 150px;
+	margin-top: 25px;
+	margin-left: 15px;
+}
+
+div.popdown a {
+	text-decoration: none;
+}
+
+#mainframe {
+	width: 100%;
+	height: 600px;
+	border: none;
+}
+
+button#execute {
+	width: 153px;
+	height: 38px;
+	background: url(../images/execute_query.png) no-repeat top center;
+	border: none;
+}
+
+.axis path,
+.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.x.axis path {
+	display: none;
+}
+
+.line {
+	fill: none;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
+
+#footer {
+	background-color: #eaeaea;
+	height: 80px;
+	border-top: 1px solid #dedede;
+}
+
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -81px;
+}
+
+#footer .footer-contact {
+	margin-top: 15px;
+}
+
+#footer .footer-contact span {
+	font-size: 15px;
+	color: #666666;
+}
+
+#footer .footer-contact img {
+	margin-left: 5px;
+}
+
+#footer .footer-contact img:hover {
+	background: url(../images/contact.png);
+}

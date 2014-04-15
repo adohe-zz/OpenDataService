@@ -6,6 +6,7 @@ module.exports = function(app, config) {
     database: config.db.name,
     responseLimit: -1,
     checkPermission: function(access, user, entitySets, callback) {
+      callback.success();
     },
     provider: {
       name: 'mongoDB',

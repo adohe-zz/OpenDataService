@@ -41,7 +41,6 @@ Entity.get = function(entityName, callback) {
 						var entity = new Entity(doc);
 						entities.push(entity);
 					});
-					logger.debug('Total entities: ' + entities.length);
 					callback(null, entities);
 				});
 			} else {

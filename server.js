@@ -12,12 +12,12 @@ EDM.init(config, function(err, context) {
 	if(err) {
 		logger.error('Error: ' + err);
 	}
+
 	logger.info('context: ' + context);
 	//Define context
 	$data.Class.define('EDMSchema', $data.EntityContext, null, context, null);
 
 	//Support ldap-auth in the feature
-
   var app = express();
 
 	// express setting
@@ -57,5 +57,4 @@ EDM.init(config, function(err, context) {
 	server.listen(port, function() {
 		console.log('The server started...');
 	});
-
 });
