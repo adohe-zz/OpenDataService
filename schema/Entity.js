@@ -1,7 +1,6 @@
 var	db = require('../config/db'),
 	logger = require('../config/log'),
-	utils = require('../lib/utils'),
-	mongodb = require('mongodb');
+	utils = require('../lib/utils');
 
 var env = process.env.NODE_ENV || 'development',
     config = require('../config/config')[env];
@@ -9,6 +8,7 @@ var env = process.env.NODE_ENV || 'development',
 function Entity(entity) {
 }
 
+// Export entity
 module.exports = Entity;
 
 /**
@@ -17,22 +17,26 @@ module.exports = Entity;
  * @param callback
  */
 Entity.get = function(entityName, callback) {
+  // Establish connection to db
 	db.open(function(err, db) {
 		if(err) {
 			return callback(err, null);
 		}
 
+    // Authenticate
 		db.authenticate(config.db.adminName, config.db.adminPwd, function(err, result) {
 			if(result) {
 				var query = {};
 				if(entityName) {
 					query.entity = entityName;
 				}
-				var collection = new mongodb.Collection(db, 'entities');
+
+        // Fetch a collection
+				var collection = db.collection('entities');
 				collection.find(query, {}).toArray(function(err, docs) {
+          // Close db connection
+          db.close();
 					if(err) {
-						mongodb.close();
-						logger.error('There is a error when fetch data from entities...');
 						callback(err, null);
 					}
 
@@ -44,7 +48,9 @@ Entity.get = function(entityName, callback) {
 					callback(null, entities);
 				});
 			} else {
-				return callback(utils.error('authenticate failed'), null);
+			  // Close db connection
+			  db.close();
+				return callback(utils.error('Auth Error'), null);
 			}
 		});
 	});

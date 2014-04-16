@@ -13,3 +13,11 @@ exports.index = function(req, res) {
 exports.edm = function(req, res) {
   res.render('edm');
 }
+
+/**
+ * Query page
+ *
+ */
+exports.query = function(req, res) {
+  res.render('query');
+}

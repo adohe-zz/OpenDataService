@@ -144,23 +144,23 @@ html,body {
 	margin-left: 0;
 }
 
-table#entitytable {
+table#entityTable {
 	width: 100%;
 }
 
-table#entitytable tbody {
+table#entityTable tbody {
 	border: 1px solid #dcdcdc;
 }
 
-table#entitytable tbody tr.poptr {
+table#entityTable tbody tr.poptr {
 	background: #dcdcdc;
 }
 
-table#entitytable tbody tr.poptr div {
+table#entityTable tbody tr.poptr div {
 	width: 100%;
 }
 
-table#entitytable tbody tr.poptr div img {
+table#entityTable tbody tr.poptr div img {
 	padding-left: 15px;
 }
 
