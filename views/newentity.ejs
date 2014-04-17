@@ -12,6 +12,7 @@
               <% projects.forEach(function(project, index) { %>
                 <option value="<%= project.name %>.<%= project.id %>"><%= project.name %></option>
               <% }) %>
+                <option value="Create A new Project">Create A new Project</option>
             </select>
           </div>
         </div>
@@ -30,7 +31,6 @@
           <label class="control-label" for="report">Source DB</label>
           <div class="controls">
             <input id="report" name="report" type="text" placeholder="Please specify source db" class="input-xlarge" required="">
-            <p class="help-block">Unique Report ID</p>
           </div>
         </div>
         
@@ -39,7 +39,7 @@
           <label class="control-label" for="report">Source Table</label>
           <div class="controls">
             <input id="report" name="report" type="text" placeholder="Please specify source table" class="input-xlarge" required="">
-            <p class="help-block">Unique Report ID</p>
+            <p class="help-block">Unique Source Table</p>
           </div>
         </div>
         
