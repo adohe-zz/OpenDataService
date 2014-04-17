@@ -5,7 +5,18 @@ var	db = require('../config/db'),
 var env = process.env.NODE_ENV || 'development',
     config = require('../config/config')[env];
 
-function Entity(entity) {
+function Entity(entityName, projectName, source, table, cache,
+    env, properties, stat, rowCount, lastUpdate) {
+      this.EntityName = entityName;
+      this.ProjectName = projectName;
+      this.Source = source;
+      this.Table = table;
+      this.Cache = cache;
+      this.Env = env || 'prod';
+      this.Properties = properties || {};
+      this.Status = stat || 'pending';
+      this.RowCount = rowCount || 0;
+      this.LastUpdate = lastUpdate || new Date();
 }
 
 // Export entity
@@ -54,4 +65,56 @@ Entity.get = function(entityName, callback) {
 			}
 		});
 	});
+}
+
+/**
+ * Create a new entity
+ * @param callback function
+ *
+ */
+Entity.prototype.create = function(callback) {
+  // The new created entity model
+  var entity = {
+    EntityName: this.EntityName,
+    ProjectName: this.ProjectName,
+    Source: this.Source,
+    Table: this.Table,
+    Cache: this.Cache,
+    Env: this.Env,
+    Properties: this.Properties,
+    Status: this.Status,
+    RowCount: this.RowCount,
+    LastUpdate: this.LastUpdate
+  };
+
+  // Establish connection to db
+  db.open(function(err, db) {
+    if(err) {
+      return callback(err);
+    }
+
+    // Authenticate
+    db.authenticate(config.db.adminName, config.db.adminPwd, function(err, result) {
+      if(result) {
+        // Fetch a collection
+        db.collection('entities', function(err, collection) {
+          if(err) {
+            // Close db connection
+            db.close();
+            return callback(err);
+          }
+
+          collection.insert(entity, {safe: true}, function(err, result) {
+            // Close db connection
+            db.close();
+            callback(err, result);
+          });
+        });
+      } else {
+        // Close db connection
+        db.close();
+        callback(utils.error('Auth Error'));
+      }
+    });
+  });
 }

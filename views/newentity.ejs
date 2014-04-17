@@ -1,70 +1,76 @@
-<form class="form-horizontal">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Submit New Entity</legend>
-
-<!-- Select Basic -->
-<div class="control-group">
-  <label class="control-label" for="project">MicroStrategy Project</label>
-  <div class="controls">
-    <select id="project" name="project" class="input-xlarge">
-      <option>eBay Finance Analytics</option>
-      <option>M2</option>
-      <option>Seller Insight</option>
-      <option>Site Speed Analytics</option>
-    </select>
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="control-group">
-  <label class="control-label" for="report">Supported Report</label>
-  <div class="controls">
-    <select id="report" name="report" class="input-xlarge">
-      <option>Report 1</option>
-      <option>Report 2</option>
-      <option>Report 3</option>
-    </select>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="control-group">
-  <label class="control-label" for="entity">OData Entity Name</label>
-  <div class="controls">
-    <input id="entity" name="entity" type="text" placeholder="Please speicfy entity name" class="input-xlarge" required="">
-    <p class="help-block">Unique OData Entity Name</p>
-  </div>
-</div>
-
-<!-- Multiple Radios -->
-<div class="control-group">
-  <label class="control-label" for="access">Access Level</label>
-  <div class="controls">
-    <label class="radio" for="access-0">
-      <input type="radio" name="access" id="access-0" value="L3" checked="checked">
-      L3
-    </label>
-    <label class="radio" for="access-1">
-      <input type="radio" name="access" id="access-1" value="L2">
-      L2
-    </label>
-    <label class="radio" for="access-2">
-      <input type="radio" name="access" id="access-2" value="L1">
-      L1
-    </label>
-  </div>
-</div>
-
-<!-- Button (Double) -->
-<div class="control-group">
-  <label class="control-label" for="button1id"></label>
-  <div class="controls">
-    <button id="button1id" name="button1id" class="btn btn-success">Submit</button>
-    <button id="reset" name="reset" class="btn btn-inverse">Reset</button>
-  </div>
-</div>
-
-</fieldset>
+<form class="form-horizontal" method="post" action="/newentity">
+    <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Submit New Entity</legend>
+        
+        <!-- Select Basic -->
+        <div class="control-group">
+          <label class="control-label" for="project">OData Project Name</label>
+          <div class="controls">
+            <select id="project" name="project" class="input-xlarge">
+              <% projects.forEach(function(project, index) { %>
+                <option value="<%= project.name %>.<%= project.id %>"><%= project.name %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="control-group">
+          <label class="control-label" for="entity">OData Entity Name</label>
+          <div class="controls">
+            <input id="entity" name="entity" type="text" placeholder="Please speicfy entity name" class="input-xlarge" required="">
+            <p class="help-block">Unique OData Entity Name</p>
+          </div>
+        </div>
+        
+        <!-- Text input -->
+        <div class="control-group">
+          <label class="control-label" for="report">Source DB</label>
+          <div class="controls">
+            <input id="report" name="report" type="text" placeholder="Please specify source db" class="input-xlarge" required="">
+            <p class="help-block">Unique Report ID</p>
+          </div>
+        </div>
+        
+        <!-- Text input -->
+        <div class="control-group">
+          <label class="control-label" for="report">Source Table</label>
+          <div class="controls">
+            <input id="report" name="report" type="text" placeholder="Please specify source table" class="input-xlarge" required="">
+            <p class="help-block">Unique Report ID</p>
+          </div>
+        </div>
+        
+        <!-- Multiple Radios -->
+        <div class="control-group">
+          <label class="control-label" for="cache">Cache</label>
+          <div class="controls">
+            <label class="radio" for="cache-0">
+              <input type="radio" name="cache" id="cache-0" value="no cache" checked="checked">
+              No Cache
+            </label>
+            <label class="radio" for="cache-1">
+              <input type="radio" name="cache" id="cache-1" value="daily">
+              Daily
+            </label>
+            <label class="radio" for="cache-2">
+              <input type="radio" name="cache" id="cache-2" value="weekly">
+              Weekly
+            </label>
+          </div>
+        </div>
+        
+        <!-- Button (Double) -->
+        <div class="control-group">
+          <label class="control-label" for="button1id"></label>
+          <div class="controls">
+            <button id="button1id" name="button1id" class="btn btn-success">Submit</button>
+            <button id="reset" name="reset" class="btn btn-inverse">Reset</button>
+          </div>
+        </div>
+        
+    </fieldset>
 </form>
+
