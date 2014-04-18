@@ -9,10 +9,11 @@
           <label class="control-label" for="project">OData Project Name</label>
           <div class="controls">
             <select id="project" name="project" class="input-xlarge">
+                <option value="Default">Please choose a project</option>
               <% projects.forEach(function(project, index) { %>
                 <option value="<%= project.name %>.<%= project.id %>"><%= project.name %></option>
               <% }) %>
-                <option value="Create A new Project">Create A new Project</option>
+                <option value="new_project">Create A new Project</option>
             </select>
           </div>
         </div>
@@ -74,3 +75,25 @@
     </fieldset>
 </form>
 
+<!-- Modal -->
+<div id="project_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Create Project</h3>
+  </div>
+  <div class="modal-body">
+    <div class="control-group">
+        <label class="control-label" for="project_name" style="float: left;">Project Name</label>
+        <div class="controls">
+            <input id="project_name" name="project_name" type="text" placeholder="Project name" class="input-xlarge" required="">
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Submit</button>
+  </div>
+</div>
+
+<!-- Load js -->
+<script type="text/javascript" src='/javascripts/project.js'></script>
