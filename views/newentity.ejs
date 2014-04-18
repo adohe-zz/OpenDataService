@@ -85,13 +85,20 @@
     <div class="control-group">
         <label class="control-label" for="project_name" style="float: left;">Project Name</label>
         <div class="controls">
-            <input id="project_name" name="project_name" type="text" placeholder="Project name" class="input-xlarge" required="">
+            <input id="project_name" name="project_name" type="text" placeholder="Please specify project name" class="input-xlarge" required="">
+            <p class="help-block">Unique Project Name</p>
         </div>
     </div>
     <div class="control-group">
         <label class="control-label" for="project_prefix" style="float: left;">Project Name Prefix</label>
         <div class="controls">
-            <input id="project_prefix" name="project_prefix" type="text" placeholder="Project name Prefix" class="input-xlarge" required="">
+            <input id="project_prefix" name="project_prefix" type="text" placeholder="Please specify project name prefix" class="input-xlarge" required="">
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="project_owner" style="float: left;">Project Owner</label>
+        <div class="controls">
+            <input id="project_owner" name="project_owner" type="text" placeholder="Please specify project owner" class="input-xlarge" required="">
         </div>
     </div>
     <div class="control-group">
@@ -105,16 +112,10 @@
         </select>
       </div>
     </div>
-    <div class="control-group">
-        <label class="control-label" for="project_owner" style="float: left;">Project Owner</label>
-        <div class="controls">
-            <input id="project_owner" name="project_owner" type="text" placeholder="Project owner" class="input-xlarge" required="">
-        </div>
-    </div>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-    <button class="btn btn-primary">Submit</button>
+    <button class="btn btn-primary" id="new-project">Submit</button>
   </div>
 </div>
 

@@ -14,4 +14,30 @@ $(function () {
             $('#project_modal').modal('toggle');
         }
     });
+    
+    $('#new-project').click(function () {
+        var name = $('#project_name').val(),
+            prefix = $('#project_prefix').val(),
+            owner = $('#project_owner').val(),
+            checkIndex = $('#project_env').get(0).selectedIndex;
+        
+        if (name === '') {
+            $('#project_name').focus();
+        }
+        if (prefix === '') {
+            $('#project_prefix').focus();
+        }
+        if (owner === '') {
+            $('#project_owner').focus();
+        }
+        if (checkIndex === 0) {
+            $('#project_env').focus();
+        }
+        
+        $.ajax('/project', {
+            data: {
+            },
+            
+        });
+    });
 });

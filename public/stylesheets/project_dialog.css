@@ -9,3 +9,7 @@ div#project_modal .modal-body label.control-label {
     padding-top: 5px;
     text-align: right;
 }
+
+div#project_modal .modal-body div.controls {
+    margin-left: 160px;
+}
