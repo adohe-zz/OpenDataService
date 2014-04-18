@@ -88,6 +88,29 @@
             <input id="project_name" name="project_name" type="text" placeholder="Project name" class="input-xlarge" required="">
         </div>
     </div>
+    <div class="control-group">
+        <label class="control-label" for="project_prefix" style="float: left;">Project Name Prefix</label>
+        <div class="controls">
+            <input id="project_prefix" name="project_prefix" type="text" placeholder="Project name Prefix" class="input-xlarge" required="">
+        </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="project_env">Project Env</label>
+      <div class="controls">
+        <select id="project_env" name="project_env" class="input-xlarge">
+            <option value="Default">Please choose a env</option>
+            <option value="dev">Dev</option>
+            <option value="test">Test</option>
+            <option value="prod">Prod</option>
+        </select>
+      </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="project_owner" style="float: left;">Project Owner</label>
+        <div class="controls">
+            <input id="project_owner" name="project_owner" type="text" placeholder="Project owner" class="input-xlarge" required="">
+        </div>
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
