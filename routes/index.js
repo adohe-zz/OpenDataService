@@ -1,5 +1,6 @@
 var site = require('../controllers/index'),
-    entity = require('../controllers/entity');
+    entity = require('../controllers/entity'),
+    project = require('../controllers/project');
 
 module.exports = function(app) {
 
@@ -13,6 +14,11 @@ module.exports = function(app) {
   app.get('/query', site.query);
 
   // New entity page
-  app.get('/newentity', entity.create);
+  app.get('/entity', entity.create);
 
+  // Create project
+  app.post('/project', project.create);
+
+  // Create entity
+  app.post('/entity', entity.create);
 }

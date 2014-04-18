@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="post" action="/newentity">
+<form class="form-horizontal" method="post" action="/entity">
     <fieldset>
         
         <!-- Form Name -->
@@ -22,24 +22,24 @@
         <div class="control-group">
           <label class="control-label" for="entity">OData Entity Name</label>
           <div class="controls">
-            <input id="entity" name="entity" type="text" placeholder="Please speicfy entity name" class="input-xlarge" required="">
+            <input id="entity-name" name="entity-name" type="text" placeholder="Please speicfy entity name" class="input-xlarge" required="">
             <p class="help-block">Unique OData Entity Name</p>
           </div>
         </div>
         
         <!-- Text input -->
         <div class="control-group">
-          <label class="control-label" for="report">Source DB</label>
+          <label class="control-label" for="source-db">Source DB</label>
           <div class="controls">
-            <input id="report" name="report" type="text" placeholder="Please specify source db" class="input-xlarge" required="">
+            <input id="source-db" name="source-db" type="text" placeholder="Please specify source db" class="input-xlarge" required="">
           </div>
         </div>
         
         <!-- Text input -->
         <div class="control-group">
-          <label class="control-label" for="report">Source Table</label>
+          <label class="control-label" for="source-table">Source Table</label>
           <div class="controls">
-            <input id="report" name="report" type="text" placeholder="Please specify source table" class="input-xlarge" required="">
+            <input id="source-table" name="source-table" type="text" placeholder="Please specify source table" class="input-xlarge" required="">
             <p class="help-block">Unique Source Table</p>
           </div>
         </div>
@@ -67,7 +67,7 @@
         <div class="control-group">
           <label class="control-label" for="button1id"></label>
           <div class="controls">
-            <button id="button1id" name="button1id" class="btn btn-success">Submit</button>
+            <button id="new-entity" name="button1id" class="btn btn-success">Submit</button>
             <button id="reset" name="reset" class="btn btn-inverse">Reset</button>
           </div>
         </div>

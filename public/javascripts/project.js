@@ -36,8 +36,22 @@ $(function () {
         
         $.ajax('/project', {
             data: {
+                name: name,
+                prefix: prefix,
+                owner: owner,
+                env: $('#project_env').val()
             },
-            
+            type: 'POST',
+            success: function (jqXHR, textStatus, error) {
+                $('#project_modal').modal('hide');
+                // Add a new option
+                var option = '<option value="' + name + '">' + name + '</option>'; 
+                $('#project').append(option);
+                // Set the option selected
+                $('#project').val(name);
+            },
+            error: function (data, textStatus, jqXHR) {
+            }
         });
     });
 });

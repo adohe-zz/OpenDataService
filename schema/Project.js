@@ -65,7 +65,7 @@ Project.getProjects = function(callback) {
  * Create a new project
  * @param callback function
  */
-Project.prototype.create = function(callback) {
+Project.prototype.save = function(callback) {
   // Construct a new project
   var project = {
     name: this.name,
@@ -95,6 +95,46 @@ Project.prototype.create = function(callback) {
             // Close db connection
             db.close();
             callback(err, result);
+          });
+        });
+      } else {
+        // Close db connection
+        db.close();
+        return callback(utils.error('Auth Error'), null);
+      }
+    });
+  });
+}
+
+/**
+ * Get the project by name
+ * @param projectname
+ * @param callback function
+ *
+ */
+Project.get = function(name, callback) {
+  // Establish connection to db
+  db.open(function(err, db) {
+    if(err) {
+      return callback(err, null);
+    }
+
+    // Authenticate
+    db.authenticate(config.db.adminName, config.db.adminPwd, function(err, result) {
+      if(result) {
+        // Fetch a collection
+        db.collection('projects', function(err, collection) {
+          if(err) {
+            // Close db connection
+            db.close();
+            return callback(err, null);
+          }
+
+          var query = {name: name};
+          collection.findOne(query, function(err, doc) {
+            // Close db connection
+            db.close();
+            callback(err, doc);
           });
         });
       } else {
