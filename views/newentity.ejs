@@ -11,7 +11,7 @@
             <select id="project" name="project" class="input-xlarge">
                 <option value="Default">Please choose a project</option>
               <% projects.forEach(function(project, index) { %>
-                <option value="<%= project.name %>.<%= project.id %>"><%= project.name %></option>
+                <option value="<%= project.env %>.<%= project.name %>"><%= project.name %></option>
               <% }) %>
                 <option value="new_project">Create A new Project</option>
             </select>
@@ -20,26 +20,26 @@
         
         <!-- Text input-->
         <div class="control-group">
-          <label class="control-label" for="entity">OData Entity Name</label>
+          <label class="control-label" for="entityName">OData Entity Name</label>
           <div class="controls">
-            <input id="entity-name" name="entity-name" type="text" placeholder="Please speicfy entity name" class="input-xlarge" required="">
+            <input id="entityName" name="entityName" type="text" placeholder="Please speicfy entity name" class="input-xlarge" required="">
             <p class="help-block">Unique OData Entity Name</p>
           </div>
         </div>
         
         <!-- Text input -->
         <div class="control-group">
-          <label class="control-label" for="source-db">Source DB</label>
+          <label class="control-label" for="sourceDb">Source DB</label>
           <div class="controls">
-            <input id="source-db" name="source-db" type="text" placeholder="Please specify source db" class="input-xlarge" required="">
+            <input id="sourceDb" name="sourceDb" type="text" placeholder="Please specify source db" class="input-xlarge" required="">
           </div>
         </div>
         
         <!-- Text input -->
         <div class="control-group">
-          <label class="control-label" for="source-table">Source Table</label>
+          <label class="control-label" for="sourceTable">Source Table</label>
           <div class="controls">
-            <input id="source-table" name="source-table" type="text" placeholder="Please specify source table" class="input-xlarge" required="">
+            <input id="sourceTable" name="sourceTable" type="text" placeholder="Please specify source table" class="input-xlarge" required="">
             <p class="help-block">Unique Source Table</p>
           </div>
         </div>

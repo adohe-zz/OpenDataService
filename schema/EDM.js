@@ -5,7 +5,7 @@ var logger = require('../config/log'),
 logger.info('EDM generating...');
 exports.init = function(config, callback) {
 	context = {};
-	Entity.get(null, function(err, entities) {
+	Entity.getEntities(function(err, entities) {
 		if(err)
 			entities = [];
 		logger.info('Total entity length: ' + entities.length);

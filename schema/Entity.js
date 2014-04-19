@@ -28,6 +28,7 @@ module.exports = Entity;
  * @param callback
  */
 Entity.get = function(entityName, callback) {
+  console.log('here');
   // Establish connection to db
 	db.open(function(err, db) {
 		if(err) {
@@ -39,25 +40,16 @@ Entity.get = function(entityName, callback) {
 			if(result) {
 				var query = {};
 				if(entityName) {
-					query.entity = entityName;
+					query.EntityName = entityName;
 				}
 
         // Fetch a collection
 				var collection = db.collection('entities');
-				collection.find(query, {}).toArray(function(err, docs) {
-          // Close db connection
-          db.close();
-					if(err) {
-						callback(err, null);
-					}
-
-					var entities = [];
-					docs.forEach(function(doc) {
-						var entity = new Entity(doc);
-						entities.push(entity);
-					});
-					callback(null, entities);
-				});
+				collection.findOne(query, function(err, doc) {
+				  // Close db connection
+				  db.close();
+          callback(err, doc);
+        });
 			} else {
 			  // Close db connection
 			  db.close();
@@ -68,11 +60,56 @@ Entity.get = function(entityName, callback) {
 }
 
 /**
+ * Fetch all entities
+ * @param callback function
+ *
+ */
+Entity.getEntities = function(callback) {
+  // Establish connection to db
+  db.open(function(err, db) {
+    if(err) {
+      return callback(err, null);
+    }
+
+    // Authenticate
+    db.authenticate(config.db.adminName, config.db.adminPwd, function(err, result) {
+      if(result) {
+        // Fetch a collection
+        db.collection('entities', function(err, collection) {
+          if(err) {
+            // Close db connection
+            db.close();
+            return callback(err, null);
+          }
+
+          collection.find({}).toArray(function(err, docs) {
+            // Close db connection
+            db.close();
+            if(err) {
+              callback(err, null);
+            }
+
+            var entities = [];
+            docs.forEach(function(doc, index) {
+              var entity = new Entity(doc.EntityName, doc.ProjectName, doc.Source,
+                doc.Table, doc.Cache, doc.Env, doc.Properties, doc.Status, doc.RowCount, doc.LastUpdate);
+              entities.push(entity);
+            });
+            callback(err, entities);
+          });
+        });
+      } else {
+      }
+    });
+  });
+}
+
+/**
  * Create a new entity
  * @param callback function
  *
  */
-Entity.prototype.create = function(callback) {
+Entity.prototype.save = function(callback) {
   // The new created entity model
   var entity = {
     EntityName: this.EntityName,

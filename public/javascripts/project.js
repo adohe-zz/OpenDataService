@@ -45,10 +45,11 @@ $(function () {
             success: function (jqXHR, textStatus, error) {
                 $('#project_modal').modal('hide');
                 // Add a new option
-                var option = '<option value="' + name + '">' + name + '</option>'; 
+                var value = $('#project_env').val() + '.' + name,
+                    option = '<option value="' + value + '">' + name + '</option>'; 
                 $('#project').append(option);
                 // Set the option selected
-                $('#project').val(name);
+                $('#project').val(value);
             },
             error: function (data, textStatus, jqXHR) {
             }

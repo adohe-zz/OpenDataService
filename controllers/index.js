@@ -11,6 +11,7 @@ exports.index = function(req, res) {
  *
  */
 exports.edm = function(req, res) {
+  console.log('here');
   res.render('edm');
 }
 

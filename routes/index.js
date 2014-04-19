@@ -14,7 +14,7 @@ module.exports = function(app) {
   app.get('/query', site.query);
 
   // New entity page
-  app.get('/entity', entity.create);
+  app.get('/entity', entity.index);
 
   // Create project
   app.post('/project', project.create);
