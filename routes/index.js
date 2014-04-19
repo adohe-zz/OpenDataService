@@ -21,4 +21,7 @@ module.exports = function(app) {
 
   // Create entity
   app.post('/entity', entity.create);
+
+  // Upload page
+  app.get('/upload', site.upload);
 }

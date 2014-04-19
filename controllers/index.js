@@ -21,3 +21,11 @@ exports.edm = function(req, res) {
 exports.query = function(req, res) {
   res.render('query');
 }
+
+/**
+ * Upload file page
+ *
+ */
+exports.upload = function(req, res) {
+  res.render('upload');
+}

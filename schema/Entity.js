@@ -7,6 +7,7 @@ var env = process.env.NODE_ENV || 'development',
 
 function Entity(entityName, projectName, source, table, cache,
     env, properties, stat, rowCount, lastUpdate) {
+      console.log('here');
       this.EntityName = entityName;
       this.ProjectName = projectName;
       this.Source = source;

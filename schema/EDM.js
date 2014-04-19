@@ -1,5 +1,6 @@
 var logger = require('../config/log'),
 	Entity = require('./Entity'),
+	utils = require('../lib/utils'),
 	context;
 
 logger.info('EDM generating...');
@@ -11,7 +12,7 @@ exports.init = function(config, callback) {
 		logger.info('Total entity length: ' + entities.length);
 		entities.forEach(function(entity) {
 			logger.info('Entity Name: ' + entity.EntityName);
-			var fullEntityName = 'odata.' + entity.EntityName;
+			var fullEntityName = 'odata.' + utils.trim(entity.EntityName);
 			var key = entity.EntityName + 's';
 
 			//Define the odata entity
