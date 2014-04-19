@@ -28,7 +28,6 @@ module.exports = Entity;
  * @param callback
  */
 Entity.get = function(entityName, callback) {
-  console.log('here');
   // Establish connection to db
 	db.open(function(err, db) {
 		if(err) {
