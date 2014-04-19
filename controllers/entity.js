@@ -1,6 +1,10 @@
 var Entity = require('../schema/Entity'),
     Project = require('../schema/Project');
 
+/**
+ * New entity page
+ *
+ */
 exports.index = function(req, res) {
   Project.getProjects(function(err, projects) {
     if(err) {

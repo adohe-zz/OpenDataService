@@ -1,37 +1,103 @@
+<link href="/stylesheets/edm.css" rel="stylesheet">
 <h3>Entity Data Model<a href="/d.svc/$metadata" target="_blank">&nbsp;&nbsp;&nbsp;View Original OData Metadata</a> &nbsp;&nbsp;&nbsp;&nbsp;<button id="btn_submit" name="btn_submit" class="btn btn-success">Submit New Entity</button>&nbsp;&nbsp;<button id="btn_upload" name="btn_upload" class="btn btn-success">Upload CSV File</button></h3>
 <div class="row-fluid">
-	<table id="entityTable" class="example1" width="1200">
-		<colgroup span="0" width="400"></colgroup>
-		<colgroup span="4" width="400"></colgroup>
-		<thead>
-			<tr class="col">
-				<td class="p1"><h4>&nbsp;&nbsp;&nbsp;&nbsp;Name</h4></td>
-				<td class="p2"><h4>Last Update</h4></td>
-				<td class="p3"><h4>Project</h4></td>
-				<td class="p4"><h4>Access Level</h4></td>
-			</tr>
-		</thead>
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered" id="entity-table">
+	   <thead>
+		<tr class="col">
+			<td class="p01"><h5>&nbsp;&nbsp;&nbsp;Name</h5></td>
+			<td class="p02"><h5>Row Count<h5></td>
+			<td class="p03"><h5>Status&nbsp;&nbsp;<img src="/img2/grid-refresh.png"><h5></td>
+			<td class="p04"><h5>Last Update&nbsp;&nbsp;<img src="/img2/edm-list_order-2.png"></h5></td>
+			<td class="p05"><h5>Source</h5></td>
+			<td class="p06"><h5>Env</h5></td>
+			<td class="p07"><h5>Action&nbsp;&nbsp;&nbsp;</h5></td>
+			<td class="p06"><h5>Action2&nbsp;&nbsp;&nbsp;</h5></td>
+		</tr>
+	</thead>
+	   <tbody>
+<% entities.forEach(function(entity, index) { %>
+				<tr id="tr<%= index%>">
+					<td class="p1">
+						<h5><%= entity.EntityName %></h5>
+					</td>
+					<td class="p2">
+						<h5>0</h5>
+					</td>
+					<td class="p3">
+
+						<% if(entity.Status=="completed") { %>
+    							<h5><img src="/img2/completed.png"></h5>			
+						
+						<% } else { if(entity.Status=="running"){%>
+   							 
+   							<h5><img src="./img2/running.png"></h5>	
+   							<% } else { if(entity.Status=="error"){%>
+   							<h5><img src="/img2/error.png"></h5>
+
+   							<% } else { if(entity.Status=="traggled") %>
+   							<h5><img src="/img2/traggled.png"></h5>	
+   								<% }}} %>	
+					</td>
+					<td class="p4">
+						<h5>2012-13-116</h5>
+					</td>
+					<td class="p5">
+						<h5><%= entity.Source %>--<%= entity.ProjectName %></h5>
+					</td>
+					<td class="p6">
+						<h5><%= entity.Security %></h5>
+					</td>
+					<td class="p7">
+						<h5><ul class="nav nav-pills">
+              				<li class="dropdown"  style="text-align:center;">
+                			<a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Open with...<b class="caret"></b></a>
+                			<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+                  			<li role="presentation" style="margin-top:0px;margin-bottom:0px;height=0px;"><a role="menuitem" tabindex="-1" href="#">Query Builder</a></li>    
+                  			<li role="presentation" class="divider"></li>
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Xml</a></li>
+                  			<li role="presentation" class="divider"></li>
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Json</a></li>
+                			</ul>
+             			 </li></ul></h5>
+					</td>
+					<td class="p6">
+						<h5><ul class="nav nav-pills">
+				 			<li class="dropdown">
+                			<a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">More...<b class="caret"></b></a>
+                			<ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Build Query</a></li>
+                  			<li role="presentation" class="divider"></li>
+                 			 <li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Get</a></li>
+                  			<li role="presentation" class="divider"></li>
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Download CSV</a></li>
+                			</ul>
+              				</li></ul></h5>
+					</td>
+				</tr>
+
+		<% }) %>
+	</tbody>
 	</table>
+</div>
+<div>
+    <img src="/img2/running.png"><span>&nbsp;&nbsp;&nbsp;Running&nbsp;&nbsp;&nbsp;</span>
+    <img src="/img2/completed.png"><span>&nbsp;&nbsp;&nbsp;Completed&nbsp;&nbsp;&nbsp;</span>
+    <img src="/img2/traggled.png"><span>&nbsp;&nbsp;&nbsp;Traggled&nbsp;&nbsp;&nbsp;</span>
+    <img src="/img2/error.png"><span>&nbsp;&nbsp;&nbsp;Error&nbsp;&nbsp;&nbsp;</span>
 </div>
 
 
+<script type="text/javascript" src="/javascripts/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/javascripts/DT_bootstrap.js"></script>
+<script type="text/javascript" src="/javascripts/holder.min.js"></script>
 <script type="text/javascript">
     $('#btn_submit').click(function() {
         window.location.href = '/entity';
     });
-
-	$('#btn_upload').click(function() {
-		window.location.href = '/upload';
-	});
-
-    OData.read('/d.svc/$metadata', function (metadata) {
-        var entitySets = metadata.dataServices.schema[0].entityType;
-        var entityCount = entitySets.length;
-        for(var i = 0; i < entityCount; i++)
-        {
-            createTbody(entitySets[i].name, i);
-        }
-    }, function (err) {
-        alert('Error:' + JSON.stringify(err));
-    }, OData.metadataHandler);
+    
+    $('#btn_upload').click(function() {
+        window.location.href = '/upload';
+    });
+    
+    $('#entity-table').dataTable();
 </script>

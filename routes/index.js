@@ -24,4 +24,5 @@ module.exports = function(app) {
 
   // Upload page
   app.get('/upload', site.upload);
+
 }
