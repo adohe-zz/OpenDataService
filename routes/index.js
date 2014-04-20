@@ -10,7 +10,7 @@ module.exports = function(app) {
   // EDM page
   app.get('/edm', site.edm);
 
-  // Query page
+  // Query builder page
   app.get('/query', site.query);
 
   // New entity page

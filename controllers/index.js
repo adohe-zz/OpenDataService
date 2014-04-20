@@ -4,23 +4,15 @@ var Entity = require('../schema/Entity');
  *  Home page
  *
  */
-exports.index = function(req, res) {
+exports.index = function (req, res) {
   res.render('index');
-}
-
-/**
- * Query page
- *
- */
-exports.query = function(req, res) {
-  res.render('query');
 }
 
 /**
  * Upload file page
  *
  */
-exports.upload = function(req, res) {
+exports.upload = function (req, res) {
   res.render('upload');
 }
 
@@ -28,7 +20,7 @@ exports.upload = function(req, res) {
  * EDM page
  *
  */
-exports.edm = function(req, res) {
+exports.edm = function (req, res) {
   Entity.getEntities(function(err, entities) {
     if(err) {
     } else {
@@ -37,4 +29,12 @@ exports.edm = function(req, res) {
       });
     }
   });
+}
+
+/**
+ * Query Builder page
+ *
+ */
+exports.query = function (req, res) {
+  res.render('query');
 }

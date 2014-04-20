@@ -1,0 +1,19 @@
+<script type="text/javascript" src="/javascripts/querybuilder.js"></script>
+<h3>Query Builder</h3>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var createdQueryBuilder = new OData.explorer.DataExplorer(
+			[
+				{
+					name: 'OpenDataService',
+					url: 'http://localhost:8000/d.svc'
+				}
+			]
+		);
+	});
+</script>
+<div class="span10">
+	<div id="queryBuilderContainer">
+	</div>
+</div>
+
