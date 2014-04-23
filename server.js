@@ -1,6 +1,6 @@
 var express = require('express'),
     logger = require('./config/log'),
-	  EDM = require('./schema/EDM');
+    EDM = require('./schema/EDM');
 
 require('odata-server');
 
@@ -18,7 +18,7 @@ EDM.init(config, function(err, context) {
 	$data.Class.define('EDMSchema', $data.EntityContext, null, context, null);
 
 	//Support ldap-auth in the feature
-  var app = express();
+  	var app = express();
 
 	// express setting
 	logger.info('setup express server now...');
@@ -28,9 +28,9 @@ EDM.init(config, function(err, context) {
 	logger.info('configure routes...');
 	require('./routes')(app);
 
-  // odata server setting
-  logger.info('setup odata server...');
-  require('./config/odata')(app, config);
+	// odata server setting
+  	logger.info('setup odata server...');
+  	require('./config/odata')(app, config);
 
 	//var connect = require('connect');
 	var http = require('http');
