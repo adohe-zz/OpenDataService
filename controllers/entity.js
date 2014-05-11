@@ -1,5 +1,6 @@
 var Entity = require('../schema/Entity'),
-    Project = require('../schema/Project');
+    Project = require('../schema/Project'),
+    http = require('http');
 
 /**
  * New entity page
@@ -27,7 +28,11 @@ exports.create = function(req, res) {
       entityName = req.body.entityName,
       entityDB = req.body.sourceDb,
       entityTable = req.body.sourceTable,
-      entityCache = req.body.cache;
+      entityCache = req.body.cache,
+      options = {
+        port: 8080,
+        path: '/metadata?name=' + entityTable
+      };
 
   Entity.get(entityName, function(err, entity) {
     if(err) {
@@ -42,6 +47,11 @@ exports.create = function(req, res) {
     newEntity.save(function(err, result) {
       if(result) {
         res.redirect('/edm');
+        http.get(options, function (resp) {
+          if (resp.statusCode === 200) {
+            console.log('success');
+          }
+        });
       }
     });
   });

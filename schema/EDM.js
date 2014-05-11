@@ -12,10 +12,11 @@ exports.init = function(config, callback) {
 		logger.info('Total entity length: ' + entities.length);
 		entities.forEach(function(entity) {
 			logger.info('Entity Name: ' + entity.EntityName);
-			var fullEntityName = 'odata.' + utils.trim(entity.EntityName);
+			//var fullEntityName = 'odata.' + utils.trim(entity.EntityName);
+			var fullEntityName = utils.trim(entity.EntityName);
 			var key = entity.EntityName + 's';
 
-			//Define the odata entity
+			// Define the odata entity
 			var oentity = $data.Class.define(fullEntityName, $data.Entity, null, entity.Properties);
 			context[key] = {type: $data.EntitySet, elementType: oentity};
 		});
