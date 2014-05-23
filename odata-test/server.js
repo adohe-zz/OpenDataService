@@ -6,17 +6,17 @@ var context = new $news.Types.NewsContext({ name: 'mongoDB', databaseName: 'news
 context.onReady(function(db){
     contextType.generateTestData(db, function(count){
         console.log('Test data upload successful. ', count, 'items inserted.');
-        console.log('Starting NewsReader OData server.');
+        console.log('Starting OData server.');
 
         var connect = require('connect');
         var app = connect();
-        
+
         app.use(connect.basicAuth(function(username, password){
             if (username == 'admin'){
                 return password == 'admin';
             }else return true;
         }));
-        app.use('/newsreader.svc', $data.ODataServer({
+        app.use('/d.svc', $data.ODataServer({
             type: contextType,
             CORS: true,
             database: 'newsreader',
@@ -32,8 +32,8 @@ context.onReady(function(db){
             }
         }));
 
-        app.listen(52999);
-        
-        console.log('NewsReader OData server listening on http://localhost:52999/newsreader.svc');
+        app.listen(8888);
+
+        console.log('OData server listening on http://localhost:8888/d.svc');
     });
 });
