@@ -67,7 +67,7 @@
                 			<ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
                   			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#" id="sync_data" title="<%= entity.EntityName %>_<%= entity.Table %>">Sync Data</a></li>
                   			<li role="presentation" class="divider"></li>
-                 			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Download CSV</a></li>
+                 			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#" id="download_csv">Download CSV</a></li>
                 			</ul>
               				</li></ul></h5>
 					</td>
@@ -109,5 +109,8 @@
             alert(data);
         });
         return false;
+    });
+    
+    $('#download_csv').click(function () {
     });
 </script>

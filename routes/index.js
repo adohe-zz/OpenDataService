@@ -10,6 +10,9 @@ module.exports = function(app) {
   // EDM page
   app.get('/edm', site.edm);
 
+  // Admin page
+  app.get('/admin', site.admin);
+
   // Query builder page
   app.get('/query', site.query);
 
