@@ -1,4 +1,6 @@
-var Entity = require('../schema/Entity');
+var Entity = require('../schema/Entity'),
+    http = require('http'),
+    url = require('url');
 
 /**
  *  Home page
@@ -37,4 +39,34 @@ exports.edm = function (req, res) {
  */
 exports.query = function (req, res) {
   res.render('query');
+}
+
+/**
+ * Sync data
+ *
+ */
+exports.sync = function (req, res) {
+  var query = url.parse(req.url, true).query,
+      table = query.name,
+      collection = query.collection,
+      entityName = collection.substring(0, collection.length - 1),
+      options = {
+        port: 8080,
+        path: '/data?name=' + table + '&collection=' + collection
+      };
+
+  Entity.get(entityName, function (err, doc) {
+    if (doc.Status === 'completed') {
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.end('Sync already finished....');
+    } else {
+      http.get(options, function (resp) {
+        if (resp.statusCode === 200) {
+          console.log('sync data finished...');
+        }
+      });
+      res.writeHead(200, {'Content-Type': 'text/plain'});
+      res.end('Sync data start....');
+    }
+  });
 }

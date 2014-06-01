@@ -25,4 +25,7 @@ module.exports = function(app) {
   // Upload page
   app.get('/upload', site.upload);
 
+  // Sync data
+  app.get('/sync', site.sync);
+
 }

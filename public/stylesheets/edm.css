@@ -4,6 +4,7 @@
 
 *.p1 h5,*.p2 h5,*.p3 h5,*.p4 h5,*.p5 h5,*.p6 h5 {
     color: black;
+    text-align:center;
 }
 
 *.p1 { 

@@ -6,8 +6,8 @@
 		<tr class="col">
 			<td class="p01"><h5>&nbsp;&nbsp;&nbsp;Name</h5></td>
 			<td class="p02"><h5>Row Count<h5></td>
-			<td class="p03"><h5>Status&nbsp;&nbsp;<img src="/img2/grid-refresh.png"><h5></td>
-			<td class="p04"><h5>Last Update&nbsp;&nbsp;<img src="/img2/edm-list_order-2.png"></h5></td>
+			<td class="p03"><h5>Status&nbsp;&nbsp;<h5></td>
+			<td class="p04"><h5>Last Update&nbsp;&nbsp;</h5></td>
 			<td class="p05"><h5>Source</h5></td>
 			<td class="p06"><h5>Env</h5></td>
 			<td class="p07"><h5>Action&nbsp;&nbsp;&nbsp;</h5></td>
@@ -52,11 +52,11 @@
               				<li class="dropdown"  style="text-align:center;">
                 			<a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">Open with...<b class="caret"></b></a>
                 			<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-                  			<li role="presentation" style="margin-top:0px;margin-bottom:0px;height=0px;"><a role="menuitem" tabindex="-1" href="#">Query Builder</a></li>    
+                  			<li role="presentation" style="margin-top:0px;margin-bottom:0px;height=0px;"><a role="menuitem" tabindex="-1" href="/query">Query Builder</a></li>    
                   			<li role="presentation" class="divider"></li>
-                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Xml</a></li>
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" target="_blank" href="/d.svc/<%= entity.EntityName %>s">Xml</a></li>
                   			<li role="presentation" class="divider"></li>
-                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Json</a></li>
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" target="_blank" href="/d.svc/<%= entity.EntityName %>s?$format=json">Json</a></li>
                 			</ul>
              			 </li></ul></h5>
 					</td>
@@ -65,11 +65,9 @@
 				 			<li class="dropdown">
                 			<a class="dropdown-toggle" id="drop5" role="button" data-toggle="dropdown" href="#">More...<b class="caret"></b></a>
                 			<ul id="menu2" class="dropdown-menu" role="menu" aria-labelledby="drop5">
-                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Build Query</a></li>
+                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#" id="sync_data" title="<%= entity.EntityName %>_<%= entity.Table %>">Sync Data</a></li>
                   			<li role="presentation" class="divider"></li>
-                 			 <li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Get</a></li>
-                  			<li role="presentation" class="divider"></li>
-                  			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Download CSV</a></li>
+                 			<li role="presentation" style="margin-top:0px;"><a role="menuitem" tabindex="-1" href="#">Download CSV</a></li>
                 			</ul>
               				</li></ul></h5>
 					</td>
@@ -100,4 +98,16 @@
     });
     
     $('#entity-table').dataTable();
+    
+    $('#sync_data').click(function () {
+        var title = $(this).attr('title'),
+            arr = title.split('_'),
+            collection = arr[0] + 's',
+            table = arr[1],
+            url = 'http://localhost:8000/sync?name='+ table + '&collection=' + collection;
+        $.get(url, function (data, status) {
+            alert(data);
+        });
+        return false;
+    });
 </script>
