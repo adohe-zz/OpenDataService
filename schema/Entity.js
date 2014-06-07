@@ -91,7 +91,7 @@ Entity.getEntities = function(callback) {
             var entities = [];
             docs.forEach(function(doc, index) {
               var entity = new Entity(doc.EntityName, doc.ProjectName, doc.Source,
-                doc.Table, doc.Cache, doc.Env, doc.Properties, doc.Status, doc.RowCount, doc.LastUpdate);
+                doc.Table, doc.Cache, doc.Env, doc.Properties, doc.Status, doc.RowCount, doc.LastUpdate.toLocaleDateString());
               entities.push(entity);
             });
             callback(err, entities);

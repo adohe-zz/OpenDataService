@@ -1,3 +1,8 @@
+/**
+ * OData Server settings
+ *
+ *
+ */
 module.exports = function(app, config) {
 
   app.use('/d.svc', $data.ODataServer({

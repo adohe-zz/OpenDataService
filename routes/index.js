@@ -10,6 +10,12 @@ module.exports = function(app) {
   // EDM page
   app.get('/edm', site.edm);
 
+  // Admin page
+  app.get('/admin', site.admin);
+
+  // Visualization page
+  app.get('/visualization', site.vi);
+
   // Query builder page
   app.get('/query', site.query);
 
@@ -24,5 +30,8 @@ module.exports = function(app) {
 
   // Upload page
   app.get('/upload', site.upload);
+
+  // Sync data
+  app.get('/sync', site.sync);
 
 }
