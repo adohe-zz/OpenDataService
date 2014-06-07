@@ -50,6 +50,14 @@ exports.query = function (req, res) {
 }
 
 /**
+ * Visualization page
+ *
+ */
+exports.vi = function (req, res) {
+  res.render('visualization');
+}
+
+/**
  * Sync data
  *
  */

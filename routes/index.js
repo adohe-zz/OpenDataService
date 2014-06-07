@@ -13,6 +13,9 @@ module.exports = function(app) {
   // Admin page
   app.get('/admin', site.admin);
 
+  // Visualization page
+  app.get('/visualization', site.vi);
+
   // Query builder page
   app.get('/query', site.query);
 
