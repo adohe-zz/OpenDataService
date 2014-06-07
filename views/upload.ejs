@@ -45,7 +45,6 @@
 /*global window, $ */
 $(function () {
     'use strict';
-    // Change this to the location of your server-side upload handler:
     var url = 'http://localhost:8888',
         uploadButton = $('<button/>')
             .addClass('btn btn-primary')
@@ -69,14 +68,8 @@ $(function () {
         url: url,
         dataType: 'json',
         autoUpload: false,
-        //acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
         acceptFileTypes: /(\.|\/)(csv|tsv)/i,
-        maxFileSize: 5000000, // 5 MB
-        // Enable image resizing, except for Android and Opera,
-        // which actually support image resizing, but fail to
-        // send Blob objects via XHR requests:
-        disableImageResize: /Android(?!.*Chrome)|Opera/
-            .test(window.navigator.userAgent),
+        maxFileSize: 10000000, // 10 MB
         previewMaxWidth: 100,
         previewMaxHeight: 100,
         previewCrop: true
